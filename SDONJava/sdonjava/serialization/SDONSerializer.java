@@ -56,10 +56,6 @@ public class SDONSerializer {
     }
     
     private JsonElement getArray(Collection<?> arr) {
-        if(arr.size() == 0) {
-            return gson.toJsonTree(null);
-        }
-        
         JsonArray ret = new JsonArray();
         
         for(Object obj : arr) {
@@ -104,10 +100,6 @@ public class SDONSerializer {
     }
     
     private JsonElement getString(String val) {
-        if(val.length() == 0) {
-            return gson.toJsonTree(null);
-        }
-        
         if(val.indexOf('/') >= 0) {
             return gson.toJsonTree(val.replace("/", "\\/"));
         }
@@ -123,24 +115,15 @@ public class SDONSerializer {
         Field[] fields = obj.getClass().getDeclaredFields();
         JsonObject ret = new JsonObject();
         JsonElement temp;
-        boolean hasNonNull = false;
         
         for(Field f : fields) {
             try {
                 temp = reflectGeneric(f.get(obj), f);
                 ret.add(f.getName(), temp);
-                
-                if(!temp.isJsonNull()) {
-                    hasNonNull = true;
-                }
             }
             catch(IllegalAccessException e) {
                 return gson.toJsonTree(null);
             }
-        }
-        
-        if(!hasNonNull) {
-            return gson.toJsonTree(null);
         }
         
         return ret;

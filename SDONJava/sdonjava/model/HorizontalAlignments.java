@@ -1,13 +1,21 @@
 package sdonjava.model;
 
 /**
- * Indicates the horizontal justification of text or shapes.
- * @see {@link Shape#TextAlignH}
- * @see {@link Cell#TextAlignH}
- * @see {@link ShapeArray#ArrayAlignH}
+ * Constants table indicating the horizontal justification of text or shapes.
  */
 public abstract class HorizontalAlignments {
+    /**
+     * Left-justified alignment.
+     */
     public static final String Left = "left";
+    
+    /**
+     * Center-justified alignment.
+     */
     public static final String Center = "center";
+    
+    /**
+     * Right-justified alignment.
+     */
     public static final String Right = "right";
 }

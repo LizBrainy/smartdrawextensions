@@ -3,9 +3,9 @@ package sdonjava.model;
 import sdonjava.serialization.SDONSerializable;
 
 /**
- * Represents the container for a hyperlink.
+ * Object representing a container for a hyperlink.
  */
-public class TextHyperlink {
+public class Hyperlink {
     /**
      * The URL of the hyperlink.
      */
